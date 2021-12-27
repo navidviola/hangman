@@ -17,6 +17,7 @@ public class Main {
 
 
     public static void main(String[] args) throws FileNotFoundException {
+        System.out.println();
 
         Scanner scanner = new Scanner(new File("C:/Users/Ravin/Desktop/HangmanList.txt"));
         Scanner guessing= new Scanner(System.in);
@@ -81,7 +82,6 @@ public class Main {
 
     return (word.length()==countGuess);
     }
-
 
 
 

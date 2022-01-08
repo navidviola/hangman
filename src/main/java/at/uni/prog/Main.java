@@ -18,11 +18,13 @@ public class Main {
 
 
     public static void main(String[] args) throws FileNotFoundException {
+        // give file as a list of words from resources directory
         File file = new File(
                 Main.class.getClassLoader().getResource("list.txt").getFile());
         Scanner scanner = new Scanner(file);
+        // give input of the player
         Scanner guessing= new Scanner(System.in);
-
+        // create a list of words
         List<String> words = new ArrayList<>();
 
         while (scanner.hasNext()) {
@@ -33,10 +35,7 @@ public class Main {
 
         String word = words.get(rand.nextInt(words.size()));
 
-
         System.out.println(word);
-
-
 
         List<Character> playerGuesses = new ArrayList<>();
         printWordState(word, playerGuesses);
@@ -59,9 +58,9 @@ public class Main {
 
     /**
      *
-     * @param guessing
-     * @param word
-     * @param playerGuesses
+     * @param guessing : what the user enters.
+     * @param word : the word that will randomly select from the list of words
+     * @param playerGuesses : the list of characters the player has guessed.
      */
     private static void getPlayerGuess(Scanner guessing, String word,List<Character> playerGuesses ) {
         System.out.println("Enter a letter:");
@@ -69,6 +68,12 @@ public class Main {
         playerGuesses.add(guessingLetter.charAt(0));
     }
 
+    /**
+     *
+     * @param word : the word that will randomly select from the list of words.
+     * @param playerGuesses : the list of characters the player has guessed.
+     * @return determine if the count of guesses has reached or not.
+     */
     private static boolean printWordState(String word, List<Character> playerGuesses){
         // In order to ignore case sensitive differences
         List<Character> lowercasePlayerGuesses = new ArrayList<>();
@@ -91,7 +96,4 @@ public class Main {
 
     return (word.length()==countGuess);
     }
-
-
-
 }

@@ -2,6 +2,6 @@ Navid
 Daniel
 Ravin
 Ahmed
-Mohamed
+Muhamed
 prog
 hangman

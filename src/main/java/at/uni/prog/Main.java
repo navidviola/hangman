@@ -16,14 +16,13 @@ import java.util.Scanner;
 public class Main {
 
 
-
     public static void main(String[] args) throws FileNotFoundException {
         // give file as a list of words from resources directory
         File file = new File(
                 Main.class.getClassLoader().getResource("list.txt").getFile());
         Scanner scanner = new Scanner(file);
         // give input of the player
-        Scanner guessing= new Scanner(System.in);
+        Scanner guessing = new Scanner(System.in);
         // create a list of words
         List<String> words = new ArrayList<>();
 
@@ -44,40 +43,61 @@ public class Main {
         String guessingLetter = guessing.nextLine();
         playerGuesses.add(guessingLetter.charAt(0));
 
-        printWordState(word, playerGuesses);
+
+        Integer wrongCount = 0;
 
         while (true) {
-            getPlayerGuess(guessing, word, playerGuesses);
-            if(printWordState(word, playerGuesses)){
+
+            printHangedMan(wrongCount);
+
+            if (wrongCount >= 6) {
+                System.out.println("You lose!");
+                System.out.println("The word was: " + word);
+                break;
+            }
+
+            printWordState(word, playerGuesses);
+            if (!getPlayerGuess(guessing, word, playerGuesses)) {
+                wrongCount++;
+            }
+
+            if (printWordState(word, playerGuesses)) {
                 System.out.println("You win!");
                 break;
             }
+            System.out.println("Please enter your guess for the word:");
+            if (guessing.nextLine().equals(word)) {
+                System.out.println("You win!");
+                break;
+            } else {
+                System.out.println("Wrong guess, please try again!");
+            }
         }
 
-        }
-
-    /**
-     *
-     * @param guessing : what the user enters.
-     * @param word : the word that will randomly select from the list of words
-     * @param playerGuesses : the list of characters the player has guessed.
-     */
-    private static void getPlayerGuess(Scanner guessing, String word,List<Character> playerGuesses ) {
-        System.out.println("Enter a letter:");
-        String guessingLetter = guessing.nextLine();
-        playerGuesses.add(guessingLetter.charAt(0));
     }
 
     /**
-     *
-     * @param word : the word that will randomly select from the list of words.
+     * @param guessing      : what the user enters.
+     * @param word          : the word that will randomly select from the list of words
+     * @param playerGuesses : the list of characters the player has guessed.
+     */
+    private static boolean getPlayerGuess(Scanner guessing, String word, List<Character> playerGuesses) {
+        System.out.println("Enter a letter:");
+        String guessingLetter = guessing.nextLine();
+        playerGuesses.add(guessingLetter.charAt(0));
+
+        return word.contains(guessingLetter);
+    }
+
+    /**
+     * @param word          : the word that will randomly select from the list of words.
      * @param playerGuesses : the list of characters the player has guessed.
      * @return determine if the count of guesses has reached or not.
      */
-    private static boolean printWordState(String word, List<Character> playerGuesses){
+    private static boolean printWordState(String word, List<Character> playerGuesses) {
         // In order to ignore case sensitive differences
         List<Character> lowercasePlayerGuesses = new ArrayList<>();
-        for(Character c: playerGuesses) {
+        for (Character c : playerGuesses) {
             lowercasePlayerGuesses.add(Character.toLowerCase(c));
         }
         int countGuess = 0;
@@ -88,12 +108,46 @@ public class Main {
                 System.out.print(word.charAt(i));
                 countGuess++;
             } else {
-                System.out.print("-");
+                System.out.print("_");
                 falseGuess++;
+
             }
+
         }
         System.out.println();
 
-    return (word.length()==countGuess);
+        return (word.length() == countGuess);
+    }
+
+    private static void printHangedMan(Integer wrongCount) {
+        System.out.println(" -------");
+        System.out.println(" |     |");
+        if (wrongCount >= 1) {
+            System.out.println(" O");
+        }
+
+        if (wrongCount >= 2) {
+            System.out.print("\\ ");
+            if (wrongCount >= 3) {
+                System.out.println("/");
+            } else {
+                System.out.println("");
+            }
+        }
+
+        if (wrongCount >= 4) {
+            System.out.println(" |");
+        }
+
+        if (wrongCount >= 5) {
+            System.out.print("/ ");
+            if (wrongCount >= 6) {
+                System.out.println("\\");
+            } else {
+                System.out.println("");
+            }
+        }
+        System.out.println("");
+        System.out.println("");
     }
 }

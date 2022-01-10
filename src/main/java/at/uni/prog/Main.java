@@ -1,13 +1,6 @@
 package at.uni.prog;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -34,6 +27,7 @@ public class Main {
 
         String word = words.get(rand.nextInt(words.size()));
 
+        // It will be used if we want to test the program
         System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
@@ -100,6 +94,7 @@ public class Main {
      * @param guessing      : what the user enters.
      * @param word          : the word that will randomly select from the list of words
      * @param playerGuesses : the list of characters the player has guessed.
+     * @author https://www.codepile.net/pile/2pn7ka1W
      */
     private static boolean getPlayerGuess(Scanner guessing, String word, List<Character> playerGuesses) {
         System.out.print("Enter a letter: ");
@@ -130,7 +125,6 @@ public class Main {
             } else {
                 System.out.print("_");
                 falseGuess++;
-
             }
 
         }

@@ -37,9 +37,29 @@ public class Main {
         System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
-        printWordState(word, playerGuesses);
 
-        System.out.println("Enter a letter:");
+        System.out.println("=====================");
+        System.out.println(" Welcome to Hangman !");
+        System.out.println("=====================");
+        System.out.println("");
+
+        System.out.println("     _____________");
+        System.out.println("     |           |");
+        System.out.println("     |");
+        System.out.println("     |");
+        System.out.println("     |");
+        System.out.println("     |");
+        System.out.println("     |");
+        System.out.println("------------");
+        System.out.println("");
+
+
+
+        printWordState(word, playerGuesses);
+        System.out.println("Enter a letter: ");
+
+
+
         String guessingLetter = guessing.nextLine();
         playerGuesses.add(guessingLetter.charAt(0));
 
@@ -65,7 +85,7 @@ public class Main {
                 System.out.println("You win!");
                 break;
             }
-            System.out.println("Please enter your guess for the word:");
+            System.out.print("Please enter your guess for the word: ");
             if (guessing.nextLine().equals(word)) {
                 System.out.println("You win!");
                 break;
@@ -82,7 +102,7 @@ public class Main {
      * @param playerGuesses : the list of characters the player has guessed.
      */
     private static boolean getPlayerGuess(Scanner guessing, String word, List<Character> playerGuesses) {
-        System.out.println("Enter a letter:");
+        System.out.print("Enter a letter: ");
         String guessingLetter = guessing.nextLine();
         playerGuesses.add(guessingLetter.charAt(0));
 
@@ -94,7 +114,7 @@ public class Main {
      * @param playerGuesses : the list of characters the player has guessed.
      * @return determine if the count of guesses has reached or not.
      */
-    private static boolean printWordState(String word, List<Character> playerGuesses) {
+    public static boolean printWordState(String word, List<Character> playerGuesses) {
         // In order to ignore case sensitive differences
         List<Character> lowercasePlayerGuesses = new ArrayList<>();
         for (Character c : playerGuesses) {
@@ -119,35 +139,130 @@ public class Main {
         return (word.length() == countGuess);
     }
 
-    private static void printHangedMan(Integer wrongCount) {
-        System.out.println(" -------");
-        System.out.println(" |     |");
-        if (wrongCount >= 1) {
-            System.out.println(" O");
-        }
+    private static void printHangedMan(int falseGuess) {
+        switch (falseGuess) {
+            case 0:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
+                System.out.println(falseGuess);
 
-        if (wrongCount >= 2) {
-            System.out.print("\\ ");
-            if (wrongCount >= 3) {
-                System.out.println("/");
-            } else {
+                break;
+
+            case 1:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |           O");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
                 System.out.println("");
-            }
-        }
+                System.out.println(falseGuess);
+                break;
 
-        if (wrongCount >= 4) {
-            System.out.println(" |");
-        }
-
-        if (wrongCount >= 5) {
-            System.out.print("/ ");
-            if (wrongCount >= 6) {
-                System.out.println("\\");
-            } else {
+            case 2:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |           O");
+                System.out.println("     |           |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
                 System.out.println("");
-            }
+                System.out.println(falseGuess);
+                break;
+
+            case 3:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |           O");
+                System.out.println("     |          \\| ");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
+                System.out.println("");
+                System.out.println(falseGuess);
+                break;
+
+            case 4:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |           O");
+                System.out.println("     |          \\|/ ");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
+                System.out.println("");
+                System.out.println(falseGuess);
+                break;
+
+            case 5:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |           O");
+                System.out.println("     |          \\|/ ");
+                System.out.println("     |          /");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
+                System.out.println("");
+                System.out.println(falseGuess);
+                break;
+
+            case 6:
+                System.out.println("     _____________");
+                System.out.println("     |           |");
+                System.out.println("     |           O");
+                System.out.println("     |          \\|/ ");
+                System.out.println("     |          / \\");
+                System.out.println("     |");
+                System.out.println("     |");
+                System.out.println("------------");
+                System.out.println("");
+                System.out.println(falseGuess);
+                break;
+
+
         }
-        System.out.println("");
-        System.out.println("");
+//        System.out.println(" ---------");
+//        System.out.println(" |       |");
+//
+//        if (wrongCount >= 1) {
+//            System.out.println(" O");
+//        }
+//
+//        if (wrongCount >= 2) {
+//            System.out.print("\\ ");
+//            if (wrongCount >= 3) {
+//                System.out.println("/");
+//            } else {
+//                System.out.println("");
+//            }
+//        }
+//
+//        if (wrongCount >= 4) {
+//            System.out.println(" |");
+//        }
+//
+//        if (wrongCount >= 5) {
+//            System.out.print("/ ");
+//            if (wrongCount >= 6) {
+//                System.out.println("\\");
+//            } else {
+//                System.out.println("");
+//            }
+//        }
+//        System.out.println("");
+//        System.out.println("");
     }
 }

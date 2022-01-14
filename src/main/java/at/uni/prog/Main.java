@@ -29,7 +29,7 @@ public class Main {
         String word = words.get(rand.nextInt(words.size()));
 
         // It will be used if we want to test the program
-        // System.out.println(word);
+        System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
 
@@ -86,22 +86,12 @@ public class Main {
      * @author https://www.codepile.net/pile/2pn7ka1W
      */
     private static boolean getPlayerGuess(Scanner guessing, String word, List<Character> playerGuesses) {
-
-
         System.out.print("Enter a letter: ");
-
         String guessingLetter = guessing.nextLine();
-
-//        if (guessingLetter.isEmpty()){
-//            System.out.println("String is empty!");
-//        }
-
         playerGuesses.add(guessingLetter.charAt(0));
-
 
         return word.contains(guessingLetter);
     }
-
 
     /**
      * @param word          : the word that will randomly select from the list of words.

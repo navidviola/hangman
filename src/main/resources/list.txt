@@ -1,9 +1,4 @@
-Navid
-Daniel
-Ravin
-Ahmed
-Muhamed
-programm
+program
 hangman
 Java
 Github
@@ -62,5 +57,3 @@ Console
 Terminal
 Debug
 Reference
-
-

@@ -29,7 +29,7 @@ public class Main {
         String word = words.get(rand.nextInt(words.size()));
 
         // It will be used if we want to test the program
-        // System.out.println(word);
+         System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
 
@@ -65,13 +65,13 @@ public class Main {
             }
 
             if (wrongCount <= 5) {
-                System.out.print("Please enter your guess for the word: ");
+                System.out.print("You have a chance to win the game, by entering the full word: ");
 
                 if (guessing.nextLine().equalsIgnoreCase(word)) {
                     System.out.println("You win!");
                     break;
                 } else {
-                    System.out.println("Wrong guess, please try again!");
+                    System.out.println("Your guess for the full word was wrong, please try again!");
                     System.out.println();
                 }
             }

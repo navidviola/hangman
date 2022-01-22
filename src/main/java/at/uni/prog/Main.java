@@ -29,7 +29,7 @@ public class Main {
         String word = words.get(rand.nextInt(words.size()));
 
         // It will be used if we want to test the program
-        System.out.println(word);
+         System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
 
@@ -65,13 +65,13 @@ public class Main {
             }
 
             if (wrongCount <= 5) {
-                System.out.print("Please enter your guess for the word: ");
+                System.out.print("You have a chance to win the game, by entering the full word: ");
 
                 if (guessing.nextLine().equalsIgnoreCase(word)) {
                     System.out.println("You win!");
                     break;
                 } else {
-                    System.out.println("Wrong guess, please try again!");
+                    System.out.println("Your guess for the full word was wrong, please try again!");
                     System.out.println();
                 }
             }
@@ -86,12 +86,22 @@ public class Main {
      * @author https://www.codepile.net/pile/2pn7ka1W
      */
     private static boolean getPlayerGuess(Scanner guessing, String word, List<Character> playerGuesses) {
+
+
         System.out.print("Enter a letter: ");
+
         String guessingLetter = guessing.nextLine();
+
+//        if (guessingLetter.isEmpty()){
+//            System.out.println("String is empty!");
+//        }
+
         playerGuesses.add(guessingLetter.charAt(0));
+
 
         return word.contains(guessingLetter);
     }
+
 
     /**
      * @param word          : the word that will randomly select from the list of words.

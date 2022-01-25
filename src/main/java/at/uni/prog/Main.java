@@ -40,13 +40,13 @@ public class Main {
         String word = words.get(rand.nextInt(words.size()));
 
         // It will be used if we want to test the program
-        // System.out.println(word);
+        System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
 
 
 
-
+        // while the game is running, the loops and methods will be executed
         int wrongCount = 0;
 
         while (true) {
@@ -130,7 +130,7 @@ public class Main {
         return (word.length() == countGuess);
     }
 
-
+    // For every wrong Guess a part of the hangman will be printed.
     private static void printHangedMan(int wrongCount) {
         switch (wrongCount) {
             case 0:

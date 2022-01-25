@@ -1,5 +1,4 @@
 package at.uni.prog;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -104,7 +103,7 @@ public class Main {
 
 
     /**
-     * @param word          : the word that will randomly select from the list of words.
+     * @param word          : the word that was randomly selected from the list of words.
      * @param playerGuesses : the list of characters the player has guessed.
      * @return determine if the count of guesses has reached or not.
      */
@@ -127,7 +126,7 @@ public class Main {
         }
         System.out.println();
 
-        return (word.length() == countGuess);
+        return (word.length() == countGuess); // countGuess : Correct answers : Because just executes if for loop is true
     }
 
     // For every wrong Guess a part of the hangman will be printed.

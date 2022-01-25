@@ -7,10 +7,21 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Main {
 
 
     public static void main(String[] args) throws FileNotFoundException {
+
+
+        System.out.println("===============================================================================");
+        System.out.println("                             Welcome to Hangman !                              ");
+        System.out.println("===============================================================================");
+        System.out.println();
+        System.out.println("* You are allowed to make six mistakes, after the sixth mistake you will lose *");
+        System.out.println();
+
+
         // give file as a list of words from resources directory
         File file = new File(
                 Main.class.getClassLoader().getResource("list.txt").getFile());
@@ -29,19 +40,14 @@ public class Main {
         String word = words.get(rand.nextInt(words.size()));
 
         // It will be used if we want to test the program
-         System.out.println(word);
+        // System.out.println(word);
 
         List<Character> playerGuesses = new ArrayList<>();
 
-        System.out.println("===============================================================================");
-        System.out.println("                             Welcome to Hangman !                              ");
-        System.out.println("===============================================================================");
-        System.out.println();
-        System.out.println("* You are allowed to make six mistakes, after the sixth mistake you will lose *");
-        System.out.println();
 
 
-        Integer wrongCount = 0;
+
+        int wrongCount = 0;
 
         while (true) {
             printHangedMan(wrongCount);
@@ -79,6 +85,7 @@ public class Main {
 
     }
 
+
     /**
      * @param guessing      : what the user enters.
      * @param word          : the word that will randomly select from the list of words
@@ -86,18 +93,11 @@ public class Main {
      * @author https://www.codepile.net/pile/2pn7ka1W
      */
     private static boolean getPlayerGuess(Scanner guessing, String word, List<Character> playerGuesses) {
-
-
         System.out.print("Enter a letter: ");
 
         String guessingLetter = guessing.nextLine();
 
-//        if (guessingLetter.isEmpty()){
-//            System.out.println("String is empty!");
-//        }
-
         playerGuesses.add(guessingLetter.charAt(0));
-
 
         return word.contains(guessingLetter);
     }
@@ -130,10 +130,11 @@ public class Main {
         return (word.length() == countGuess);
     }
 
-    private static void printHangedMan(int falseGuess) {
-        switch (falseGuess) {
+
+    private static void printHangedMan(int wrongCount) {
+        switch (wrongCount) {
             case 0:
-                System.out.println(falseGuess + " mistakes currently !");
+                System.out.println(wrongCount + " mistakes currently !");
                 System.out.println();
                 System.out.println("     _____________");
                 System.out.println("     |           |");
@@ -148,7 +149,7 @@ public class Main {
                 break;
 
             case 1:
-                System.out.println(falseGuess + " mistake currently !");
+                System.out.println(wrongCount + " mistake currently !");
                 System.out.println();
                 System.out.println("     _____________");
                 System.out.println("     |           |");
@@ -162,7 +163,7 @@ public class Main {
                 break;
 
             case 2:
-                System.out.println(falseGuess + " mistakes currently !");
+                System.out.println(wrongCount + " mistakes currently !");
                 System.out.println();
                 System.out.println("     _____________");
                 System.out.println("     |           |");
@@ -176,7 +177,7 @@ public class Main {
                 break;
 
             case 3:
-                System.out.println(falseGuess + " mistakes currently !");
+                System.out.println(wrongCount + " mistakes currently !");
                 System.out.println();
                 System.out.println("     _____________");
                 System.out.println("     |           |");
@@ -190,7 +191,7 @@ public class Main {
                 break;
 
             case 4:
-                System.out.println(falseGuess + " mistakes currently !");
+                System.out.println(wrongCount + " mistakes currently !");
                 System.out.println();
                 System.out.println("     _____________");
                 System.out.println("     |           |");
@@ -204,7 +205,7 @@ public class Main {
                 break;
 
             case 5:
-                System.out.println(falseGuess + " mistakes currently! Attention!!! The next mistake will end the game.");
+                System.out.println(wrongCount + " mistakes currently! Attention!!! The next mistake will end the game.");
                 System.out.println();
                 System.out.println("     _____________");
                 System.out.println("     |           |");

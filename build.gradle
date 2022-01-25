@@ -20,9 +20,5 @@ test {
     useJUnitPlatform()
 }
 
-javafx {
-    modules = ['javafx.controls', 'javafx.fxml']
-    version = '17.0.1'
-}
 
 mainClassName = 'at.uni.prog.Main'
